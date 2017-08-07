@@ -1,0 +1,54 @@
+<div class="editOrderDiv">
+    <h2>Redigera delprojekt {{orderNo}} - {{ (order$ | async)?.name }}</h2>
+</div>
+
+<div class="backArrowDiv">
+    <button class="backArrow" routerLink="/delprojektoversikt" mdTooltip="Bakåt" mdTooltipPosition="below" md-icon-button>
+        <md-icon>keyboard_arrow_left</md-icon>
+    </button>
+</div>
+<div class="tabGroupDiv">
+    <md-tab-group>
+        <md-tab label="Delprojektinformation">
+            <order-info-form 
+                [order]="(order$ | async)"
+                (save)="saveOrder($event)"
+                (delete)="deleteOrder($event)">
+            </order-info-form>
+        </md-tab>
+        <md-tab label="Projektinformation">
+            <project-info-form 
+                [project]="(order$ | async)?.project"
+                (save)="saveProject($event)">
+            </project-info-form>
+        </md-tab>
+        <md-tab label="Kundinformation">
+            <customer-info-form 
+                [order]="(order$ | async)"
+                (save)="saveCustomer($event)">
+            </customer-info-form>
+        </md-tab>
+        <md-tab *ngIf="(order$ | async)?.orderType == 1" label="Betalningsplan">
+            <payment-plan 
+                [order]="(order$ | async)"
+                (save)="savePaymentPlan($event)"
+                (add)="addPaymentPlan($event)"
+                (delete)="deletePaymentPlan($event)">
+            </payment-plan>
+        </md-tab>
+        <md-tab *ngIf="(order$ | async)?.orderType == 2 || (order$ | async)?.orderType == 3" label="Timpriser">
+            <hourly-rates 
+                [order]="(order$ | async)"
+                (save)="saveHourlyRate($event)">
+            </hourly-rates>
+        </md-tab>
+        <md-tab label="Produkter">
+            <statistics-products
+                [order]="(order$ | async)"
+                (save)="saveStatisticsProduct($event)"
+                (add)="addStatisticsProduct($event)"
+                (delete)="deleteStatisticsProduct($event)">
+            </statistics-products>
+        </md-tab>
+    </md-tab-group>
+</div>

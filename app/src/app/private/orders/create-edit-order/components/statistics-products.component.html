@@ -1,0 +1,69 @@
+<div class="infoContainer">
+    <div *ngIf="(orderState$ | async).loading" class="loadingContainer">
+        <md-spinner></md-spinner>
+    </div>
+    <div *ngIf="(!(orderState$ | async).loading)">
+        <div *ngIf="(statisticsProducts$ | async).length == 0">
+            <div class="helpTextContainer">
+                Välj produkt, därefter klicka här för att lägga till <md-icon>reply</md-icon>
+            </div>
+        </div>
+        <table *ngIf="(statisticsProducts$ | async).length > 0">
+            <tr class="heading">
+                <td>Produkt</td>
+                <td>Antal</td>
+                <td>Pris</td>
+                <td>Summa</td>
+                <td class="column5">Ta Bort</td>
+            </tr>
+            <tr *ngFor="let statisticsProduct of (statisticsProducts$ | async); let i = index;">
+                <td class="column1">
+                    <md-input-container>
+                        <input disabled="true" mdInput value="{{statisticsProduct.productNo}} - {{statisticsProduct.description}}">
+                    </md-input-container>
+                </td>
+                <td class="column2">
+                    <md-input-container>
+                        <input #quantity (focusout)="quantityChanged(quantity.value, i)" mdInput [value]="statisticsProduct.quantity">
+                    </md-input-container>
+                </td>
+                <td class="column3">
+                    <md-input-container>
+                        <input #price (focusout)="priceChanged(price.value, i)" mdInput [value]="statisticsProduct.price">
+                    </md-input-container>
+                </td>
+                <td class="column4">
+                    <md-input-container>
+                        <input disabled="true" mdInput [value]="statisticsProduct.sum">
+                    </md-input-container>
+                </td>
+                <td class="column5">
+                    <button md-icon-button (click)="deleteStatisticsProduct(statisticsProduct.lineNo)">
+                    <md-icon>delete</md-icon>
+                </button>
+                </td>
+            </tr>
+            <tr class="footer">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{ (statisticsProducts$ | async) | calculateTotalStatisticsProductsSum }}</td>
+                <td></td>
+            </tr>
+        </table>
+        <section *ngIf="(comboboxItemsState$ | async).statisticsProducts != null" class="addSection">
+            <div class="column">
+                <md-input-container>
+                    <input mdInput disabled="true" placeholder="Ordervärde" value="{{ (order$ | async)?.orderValue }}">
+                </md-input-container>
+            </div>
+            <div class="column">
+                <search-box-select [getCurrentId]="clickAddStatisticsProduct" (setId)="addStatisticsProduct($event)" [selectList]="statisticsProductsComboboxItems$ | async" [boundProperty]="'id'" placeholder="Välj produkt">
+                    </search-box-select>
+            </div>
+            <div class="column">
+                <button md-button type="button" (click)="addStatisticsProductBtnClicked()"><md-icon>add</md-icon>Lägg till produkt</button>
+            </div>
+        </section>
+    </div>
+</div>

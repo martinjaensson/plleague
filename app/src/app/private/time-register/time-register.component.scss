@@ -1,0 +1,23 @@
+@import '../../../assets/stylesheets/_variables';
+
+.labelDiv {
+    height: 0px;
+    h2 {
+        text-align: center;
+        position: relative;
+        top: -50px;
+        color: white;
+        font-size: 15px;
+    }
+}
+
+.backArrowDiv {
+    height: 0px;
+    z-index: 100;
+    .backArrow {
+        position:relative;
+        top: -62px;
+        color: white;
+        left: 40px;
+    }
+}

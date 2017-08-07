@@ -1,0 +1,88 @@
+<div class="infoContainer">
+    <div *ngIf="(orderState$ | async).loading" class="loadingContainer">
+        <md-spinner></md-spinner>
+    </div>
+    <div *ngIf="(!(orderState$ | async).loading)">
+        <div *ngIf="(paymentPlans$ | async).length == 0">
+            <div class="helpTextContainer">
+                Välj procent, därefter klicka här för att lägga till en delbetalning <md-icon>reply</md-icon>
+            </div>
+        </div>
+        <table *ngIf="(paymentPlans$ | async).length > 0">
+            <tr class="heading">
+                <td>Beskrivning</td>
+                <td>Andel</td>
+                <td>Summa</td>
+                <td>Faktureringsdatum</td>
+                <td>Frisläppt</td>
+                <td>Fakturerat</td>
+                <td>Ta Bort</td>
+            </tr>
+            <tr *ngFor="let paymentPlan of (paymentPlans$ | async); let i = index;">
+                <td class="column1">
+                    <md-input-container>
+                        <input #description mdInput [value]="paymentPlan.description" (focusout)="descriptionChanged(description.value, i)">
+                    </md-input-container>
+                </td>
+                <td class="column2">
+                    <md-input-container>
+                        <input disabled="true" mdInput value="{{ (paymentPlan.sum/(order$ | async)?.orderValue)*100 | round }} %">
+                    </md-input-container>
+                </td>
+                <td class="column3">
+                    <md-input-container>
+                        <input #sum (focusout)="sumChanged(sum.value, i)" mdInput [value]="paymentPlan.sum">
+                    </md-input-container>
+                </td>
+                <td class="column4">
+                    <md-input-container (focusout)="invoiceDateChanged(invoiceDate.value, i)" class="datePickerContainer">
+                        <input #invoiceDate [disabled]="paymentPlan.finished==1" [value]="paymentPlan.invoiceDate" mdInput [mdDatepicker]="picker">
+                        <button *ngIf="paymentPlan.finished!=1" mdSuffix [mdDatepickerToggle]="picker"></button>
+                    </md-input-container>
+                    <md-datepicker #picker></md-datepicker>
+                </td>
+                <td class="column5">
+                    <div class="iconContainer">
+                        <md-icon *ngIf="!(paymentPlan.finished)">close</md-icon>
+                        <md-icon *ngIf="paymentPlan.finished">done</md-icon>
+                    </div>
+                </td>
+                <td class="column6">
+                    <div class="iconContainer">
+                        <md-icon *ngIf="!(paymentPlan.invoicedOrRealised)">close</md-icon>
+                        <md-icon *ngIf="paymentPlan.invoicedOrRealised">done</md-icon>
+                    </div>
+                </td>
+                <td class="column7">
+                    <button md-icon-button (click)="deletePaymentPlan(paymentPlan.lineNo)">
+                    <md-icon>delete</md-icon>
+                </button>
+                </td>
+            </tr>
+            <tr class="footer">
+                <td></td>
+                <td>{{(((paymentPlans$ | async) | calculateTotalPaymentPlanSum)/(order$ | async)?.orderValue)*100 | round }} %</td>
+                <td>{{ paymentPlans$ | async | calculateTotalPaymentPlanSum}}</td>
+                <td>{{order.item}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <section class="addSection">
+            <div class="column">
+                <md-input-container>
+                    <input mdInput disabled="true" placeholder="Ordervärde" value="{{ (order$ | async)?.orderValue }}">
+                </md-input-container>
+            </div>
+            <div class="column">
+                <md-input-container>
+                    <input mdInput [(ngModel)]="percentToAdd" placeholder="Ange procent av ordervärde %">
+                </md-input-container>
+            </div>
+            <div class="column">
+                <button md-button type="button" (click)="addPaymentPlanClicked()"><md-icon>add</md-icon>Lägg till delbetalning</button>
+            </div>
+        </section>
+    </div>
+</div>

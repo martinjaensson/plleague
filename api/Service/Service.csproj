@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CEA00E3D-BB4D-425E-8C22-6FCCAA47D6D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Visma.BusinessModel">
+      <HintPath>..\Vb\Lib\10\Visma.BusinessModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Visma.BusinessModel.Meta">
+      <HintPath>..\Vb\Lib\10\Visma.BusinessModel.Meta.dll</HintPath>
+    </Reference>
+    <Reference Include="Visma.BusinessServices.Client">
+      <HintPath>..\Vb\Lib\10\Visma.BusinessServices.Client.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\DbContext.cs" />
+    <Compile Include="Database\Mapping\OrderConfiguration.cs" />
+    <Compile Include="Database\Mapping\ProductConfiguration.cs" />
+    <Compile Include="Dto\ComboboxItemDto.cs" />
+    <Compile Include="Dto\ComboboxItemsDto.cs" />
+    <Compile Include="Dto\ComboboxItemsWithStringIdDto.cs" />
+    <Compile Include="Dto\ComboboxItemWithStringIdDto.cs" />
+    <Compile Include="Dto\CustomerDto.cs" />
+    <Compile Include="Dto\HourlyRateProductDto.cs" />
+    <Compile Include="Dto\LoginRequestDto.cs" />
+    <Compile Include="Dto\LoginResponseDto.cs" />
+    <Compile Include="Dto\OrderDto.cs" />
+    <Compile Include="Dto\OrderStatusDto.cs" />
+    <Compile Include="Dto\PaymentPlanDto.cs" />
+    <Compile Include="Dto\ProjectDto.cs" />
+    <Compile Include="Dto\StatisticsProductDto.cs" />
+    <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Entities\ComboboxItem.cs" />
+    <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderLine.cs" />
+    <Compile Include="Entities\OrderStatus.cs" />
+    <Compile Include="Entities\PaymentTerm.cs" />
+    <Compile Include="Entities\Price.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Project.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\ErpException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\ComboboxItemsService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Translators\CurrenciesToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\CurrencyToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\CustomersToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\CustomerToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\CustomerTranslator.cs" />
+    <Compile Include="Translators\DepartmentsToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\DepartmentToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\HourlyRateProductTranslator.cs" />
+    <Compile Include="Translators\OrderStatusTranslator.cs" />
+    <Compile Include="Translators\PaymentPlanTranslator.cs" />
+    <Compile Include="Translators\OrderTranslator.cs" />
+    <Compile Include="Translators\PaymentTermsToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\PaymentTermToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\ProjectsToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\ProjectToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\ProjectTranslator.cs" />
+    <Compile Include="Translators\StatisticsProductToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\StatisticsProductsToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\StatisticsProductsTranslator.cs" />
+    <Compile Include="Translators\ComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\ComboboxItemTranslator.cs" />
+    <Compile Include="Translators\UsersToComboboxItemsTranslator.cs" />
+    <Compile Include="Translators\UserToComboboxItemTranslator.cs" />
+    <Compile Include="Translators\UserTranslator.cs" />
+    <Compile Include="Utils\IntegerDateConverter.cs" />
+    <Compile Include="Utils\ReadWriteFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\DbViews.txt" />
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ECD4EA9B-5E33-42F5-9262-DD3F1D47D726}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vb\Vb.csproj">
+      <Project>{F49FFCC0-0707-4321-BD28-2C11EF97E8DE}</Project>
+      <Name>Vb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

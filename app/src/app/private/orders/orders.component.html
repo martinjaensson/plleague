@@ -1,0 +1,74 @@
+<div class="orderoverviewDiv">
+    <h2>Delprojektöversikt</h2>
+</div>
+
+<div class="backArrowDiv">
+    <button class="backArrow" routerLink="" mdTooltip="Bakåt" mdTooltipPosition="below" md-icon-button>
+        <md-icon>keyboard_arrow_left</md-icon>
+    </button>
+</div>
+
+<div class="newOrderBtnDiv">
+    <button (click)="createNewOrder()" class="newOrderBtn" md-button>
+        <md-icon>create_new_folder</md-icon> Nytt delprojekt
+    </button>
+</div>
+<div *ngIf="(ordersState$ | async).loading" class="loadingContainer">
+    <md-spinner></md-spinner>
+</div>
+<div *ngIf="(!(ordersState$ | async).loading)">
+    <div class="sokContainer">
+        <div class="sokOrderInput">
+            <md-input-container>
+                <input mdInput placeholder="Sök projekt..." [(ngModel)]="searchText" (keyup)="search()">
+            </md-input-container>
+        </div>
+        <div class="pagePicker">
+            <ex-pager
+                [page]="page$ | async"
+                [pages]="pageCount$ | async"
+                (prev)="prevPage()"
+                (next)="nextPage()">
+            </ex-pager>
+        </div>
+    </div>
+    <div class="tableContainer">
+        <table>
+            <tr class="heading">
+                <td></td>
+                <td>Delprojekt <br>Projekt</td>
+                <td>Kund</td>
+                <td>Projektledare</td>
+                <td class="column5">Status</td>
+                <td class="column6">Redigera</td>
+            </tr>
+            <tr class="contentRow" *ngFor="let order of (orders$ | async)">
+                <td class="column1">
+                    <div>
+                        <md-icon>folder</md-icon>
+                    </div>
+                </td>
+                <td class="column2">
+                    <div *ngIf="order.name != null" ><div class="DPIcon">DP</div><strong>{{order.id}} - {{order.name}}</strong></div>
+                    <div class="projectTextRow"><div class="PIcon">P</div><p *ngIf="order.project != null">{{order.project.id}} - {{order.project.name}} </p><p *ngIf="order.project == null">Saknar Projekt</p></div>
+                </td>
+                <td class="column3">
+                    <div *ngIf="order.customer != null">{{order.customer.name}}</div>
+                </td>
+                <td class="column4">
+                    <div *ngIf="order.project != null">
+                        <div *ngIf="order.project.projectLeader != null">{{ order.project.projectLeader.employeeName }}</div>
+                    </div>
+                </td>
+                <td class="column5">
+                    <div *ngIf="order.orderStatus != null" class="status"><div class="statusNo{{order.orderStatusNo}}">{{ order.orderStatus.name }}</div></div>
+                </td>
+                <td class="column6">
+                    <button md-button [routerLink]="['/skaparedigeraprojekt/', order.id]">
+                        <md-icon>border_color</md-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
