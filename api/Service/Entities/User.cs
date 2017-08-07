@@ -4,28 +4,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Service.Entities
 {
-    [Table("Actor")]
+    [Table("Users")]
     public class User
     {
         [Key]
-        [Column("ActNo")]
-        public int ActorNo { get; set; }
+        [Column("UserId")]
+        public int UserId { get; set; }
 
-        [Column("Usr")]
+        [Column("UserName")]
         public string Username { get; set; }
 
-        [Column("Nm")]
+        [Column("Name")]
         public string Name { get; set; }
 
-        [Column("Inf")]
-        public string Information1 { get; set; }
-
-        [Column("Gr")]
-        public int TextNo { get; set; }
-        public virtual Role Role { get; set; }
-  
-        [Column("EmpNo")]
-        public int EmployeeNo { get; set; }
+        [Column("Password")]
+        public string Password { get; set; }
 
     }
 }

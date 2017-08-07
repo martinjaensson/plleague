@@ -28,24 +28,6 @@ namespace Service.Database
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<Order> Orders { get; set; }
-
-        public DbSet<Project> Projects { get; set; }
-
-        public DbSet<ComboboxItem> ComboboxItems { get; set; }
-
-        public DbSet<Customer> Customers { get; set; }
-
-        public DbSet<PaymentTerm> PaymentTerms { get; set; }
-
-        public DbSet<Currency> Currencies { get; set; }
-
-        public DbSet<Department> Departments { get; set; }
-
-        public DbSet<Product> Products { get; set; }
-
-        public DbSet<Price> Prices { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure code conventions

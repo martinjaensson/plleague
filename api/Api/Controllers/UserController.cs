@@ -10,8 +10,8 @@ using System.Web.Http;
 
 namespace Api.Controllers
 {
-    [AuthenticationFilter]
-    [Authorize]
+    //[AuthenticationFilter]
+    //[Authorize]
     public class UserController : ApiController
     {
         /// <summary>
@@ -47,6 +47,16 @@ namespace Api.Controllers
                         ApiResponse.CreateErrorResponse(ErrorCode.MissingItem, $"No user with username {username} exists"));
                 else
                     return Request.CreateResponse(HttpStatusCode.OK, ApiResponse.Create(result));
+            }
+        }
+
+        [Route("Users")]
+        public async Task<HttpResponseMessage> GetUsers()
+        {
+            using (var service = new UserService(RequestContext.Principal.Identity))
+            {
+                var users = await service.getUsers();
+                return Request.CreateResponse(ApiResponse.Create(users));
             }
         }
     }

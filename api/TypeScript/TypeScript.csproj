@@ -69,30 +69,6 @@
       <DependentUpon>ApiTemplate.tst</DependentUpon>
       <CustomToolNamespace>..\Api\Models\ApiResponse.cs</CustomToolNamespace>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\ComboboxItemDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\ComboboxItemDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\ComboboxItemsDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\ComboboxItemsDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\ComboboxItemsWithStringIdDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\ComboboxItemsWithStringIdDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\ComboboxItemWithStringIdDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\ComboboxItemWithStringIdDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\CustomerDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\CustomerDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\HourlyRateProductDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\HourlyRateProductDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Service\LoginRequestDto.ts">
       <DependentUpon>ServiceTemplate.tst</DependentUpon>
       <CustomToolNamespace>..\Service\Dto\LoginRequestDto.cs</CustomToolNamespace>
@@ -100,26 +76,6 @@
     <TypeScriptCompile Include="Service\LoginResponseDto.ts">
       <DependentUpon>ServiceTemplate.tst</DependentUpon>
       <CustomToolNamespace>..\Service\Dto\LoginResponseDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\OrderDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\OrderDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\OrderStatusDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\OrderStatusDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\PaymentPlanDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\PaymentPlanDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\ProjectDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\ProjectDto.cs</CustomToolNamespace>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Service\StatisticsProductDto.ts">
-      <DependentUpon>ServiceTemplate.tst</DependentUpon>
-      <CustomToolNamespace>..\Service\Dto\StatisticsProductDto.cs</CustomToolNamespace>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Service\UserDto.ts">
       <DependentUpon>ServiceTemplate.tst</DependentUpon>

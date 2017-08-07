@@ -14,10 +14,9 @@ namespace Service.Translators
 
             return new UserDto
             {
+                UserId = user.UserId,
                 Username = user.Username,
-                //Password = user.Information1,
-                Role = user.Role != null ? user.Role.Text : "",
-                EmployeeName = user.Name
+                Name = user.Name
             };
         }
 

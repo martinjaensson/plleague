@@ -1,6 +1,8 @@
 ﻿using Service.Dto;
 using Service.Translators;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 
@@ -8,7 +10,6 @@ namespace Service.Services
 {
     public class UserService : BaseService
     {
-        //Hej
         public UserService(IIdentity authenticatedUser)
             : base(authenticatedUser) { }
 
@@ -22,7 +23,7 @@ namespace Service.Services
         public async Task<UserDto> GetByUsernameAndPassword(string username, string password)
         {
             var dbUser = await (DatabaseContext.Users
-                .FirstOrDefaultAsync(u => u.Username == username && u.Information1 == password && password != ""));
+                .FirstOrDefaultAsync(u => u.Username == username && u.Password == password && password != ""));
             var user = UserTranslator.Translate(dbUser);
             return user;
         }
@@ -38,6 +39,13 @@ namespace Service.Services
             {
                 Username = user.Username
             };
+        }
+
+        public async Task<ICollection<UserDto>> getUsers()
+        {
+            var users = await DatabaseContext.Users.ToListAsync();
+
+            return users.Select(UserTranslator.Translate).ToList();
         }
     }
 }
