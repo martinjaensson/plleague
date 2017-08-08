@@ -50,7 +50,7 @@ namespace Api.Controllers
             }
         }
 
-        [Route("Users")]
+        [Route("User")]
         public async Task<HttpResponseMessage> GetUsers()
         {
             using (var service = new UserService(RequestContext.Principal.Identity))
