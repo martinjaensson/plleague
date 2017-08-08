@@ -54,14 +54,14 @@ export class SearchBoxSelectComponent implements OnInit, OnChanges, ControlValue
 
     allSelects: any[] = [];
 
-    private value: object | number;
-    private selectingValue: boolean;
-    private localPlaceholder: string;
-    private initPlaceholder: boolean = true;
-    private previousValueSelected: boolean = true;
-    private timer: any;
-    private currentSelectedItem: any;
-    private currentSelectedId: number | string;
+    value: object | number;
+    selectingValue: boolean;
+    localPlaceholder: string;
+    initPlaceholder: boolean = true;
+    previousValueSelected: boolean = true;
+    timer: any;
+    currentSelectedItem: any;
+    currentSelectedId: number | string;
     
 
     control = new FormControl();

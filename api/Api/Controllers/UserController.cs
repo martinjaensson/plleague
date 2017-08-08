@@ -10,8 +10,8 @@ using System.Web.Http;
 
 namespace Api.Controllers
 {
-    //[AuthenticationFilter]
-    //[Authorize]
+    [AuthenticationFilter]
+    [Authorize]
     public class UserController : ApiController
     {
         /// <summary>

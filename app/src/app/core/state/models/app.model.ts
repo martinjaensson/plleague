@@ -1,4 +1,4 @@
-import { SessionState, ErrorState, OrdersState, OrdersFilterState, OrderState, ComboboxItemsState } from './';
+import { SessionState, ErrorState } from './';
 
 export interface AppState {
     
@@ -6,11 +6,5 @@ export interface AppState {
 
     error: ErrorState;
 
-    orders: OrdersState;
-    
-    ordersFilter: OrdersFilterState;
-    
-    order: OrderState;
 
-    comboboxItems: ComboboxItemsState;
 }

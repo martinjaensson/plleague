@@ -4,8 +4,7 @@
         <div class="userInfo">
             <md-icon>account_circle</md-icon>
             <div class="userName">
-                <strong>{{ (user$ | async).employeeName }}</strong><br>
-                {{ (user$ | async).role }}
+                <strong>{{ (user$ | async).name }}</strong><br>
             </div>
         </div>
         <button md-button (click)="toggleSidenav()" routerLink=""><md-icon>dashboard</md-icon>Översikt</button>

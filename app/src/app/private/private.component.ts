@@ -23,10 +23,10 @@ import {User} from '../core/models';
 })
 export class PrivateComponent implements OnInit {
     /** VARIABLES */
-    private state: string = 'inactive';
-    private menuBtnPressed: boolean = false;
-    private logo = require("../../assets/img/RS_logo.png");
-    private user$: Observable<User>;
+    state: string = 'inactive';
+    menuBtnPressed: boolean = false;
+    logo = require("../../assets/img/RS_logo.png");
+    user$: Observable<User>;
     
     constructor(private _sessionService: SessionService) { 
         

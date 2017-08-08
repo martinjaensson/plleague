@@ -10,7 +10,7 @@ import { LoginRequest } from '../core/models';
     styleUrls: [ './login.component.scss' ]
 })
 export class LoginComponent implements OnInit {
-    private logo = require("../../assets/img/RS_logo.png");
+    logo = require("../../assets/img/RS_logo.png");
 
     loginRequest: LoginRequest = new LoginRequest();
 

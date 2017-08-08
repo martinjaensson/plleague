@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { CdkTableModule } from '@angular/cdk';
 
 import { COMPONENTS } from './components';
-import { DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
 
 import { 
@@ -73,12 +72,10 @@ export const SHARED_MATERIAL_COMPONENTS = [
         ...SHARED_MATERIAL_COMPONENTS,
 
         ...COMPONENTS,
-        ...DIRECTIVES,
         ...PIPES
     ],
     declarations: [
         ...COMPONENTS,
-        ...DIRECTIVES,
         ...PIPES,
     ]
 })
